@@ -1,0 +1,26 @@
+# Refactor Workflow Template
+
+description: "Code refactoring and optimization workflow"
+
+tasks:
+  - model: claude
+    task_type: analyze_code
+    file_path: "src/utils.py"
+    parameters:
+      identify_smells: true
+      suggest_improvements: true
+
+  - model: openai
+    task_type: refactor
+    file_path: "src/utils.py"
+    parameters:
+      preserve_behavior: true
+      improve_readability: true
+      optimize_performance: true
+
+  - model: claude
+    task_type: validate_refactor
+    file_path: "src/utils.py"
+    parameters:
+      run_tests: true
+      check_breaking_changes: true

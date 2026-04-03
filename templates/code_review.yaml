@@ -1,0 +1,26 @@
+# Code Review Workflow Template
+
+description: "Automated code review workflow using AI models"
+
+tasks:
+  - model: claude
+    task_type: code_review
+    file_path: "src/main.py"
+    parameters:
+      check_style: true
+      check_security: true
+      check_performance: true
+
+  - model: openai
+    task_type: security_audit
+    file_path: "src/main.py"
+    parameters:
+      deep_scan: true
+      check_dependencies: true
+
+  - model: claude
+    task_type: best_practices
+    file_path: "src/main.py"
+    parameters:
+      language: "python"
+      framework: "fastapi"

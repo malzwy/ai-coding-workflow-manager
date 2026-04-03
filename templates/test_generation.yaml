@@ -1,0 +1,32 @@
+# Test Generation Workflow Template
+
+description: "Automated test generation workflow"
+
+tasks:
+  - model: claude
+    task_type: analyze_code
+    file_path: "src/api.py"
+    parameters:
+      identify_testable_functions: true
+      analyze_dependencies: true
+
+  - model: openai
+    task_type: generate_unit_tests
+    file_path: "src/api.py"
+    parameters:
+      framework: "pytest"
+      coverage_target: 80
+
+  - model: claude
+    task_type: generate_integration_tests
+    file_path: "src/api.py"
+    parameters:
+      test_endpoints: true
+      test_database: true
+
+  - model: openai
+    task_type: generate_e2e_tests
+    file_path: "src/api.py"
+    parameters:
+      framework: "playwright"
+      test_scenarios: ["user_login", "data_upload", "report_generation"]
